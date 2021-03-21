@@ -1,0 +1,2 @@
+rootProject.name='Habit And Goal Tracker'
+include ':app'

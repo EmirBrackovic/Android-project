@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/Menu">
+
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.example.habitandgoaltracker.details.DetailsFragment"
+        android:label="Details">
+        <action
+            android:id="@+id/action_createCategoryFragment_to_homeFragment"
+            app:destination="@id/Menu" />
+    </fragment>
+    <fragment
+        android:id="@+id/Menu"
+        android:name="com.example.habitandgoaltracker.screens.MenuFragment"
+        android:label="Menu"
+        tools:layout="@layout/fragment_menu">
+        <action
+            android:id="@+id/action_homeFragment_to_createCategoryFragment"
+            app:destination="@id/detailsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_activityFragment"
+            app:destination="@id/ActivityDetails" />
+    </fragment>
+    <fragment
+        android:id="@+id/ActivityDetails"
+        android:name="com.example.habitandgoaltracker.screens.ActivityFragment"
+        android:label="Activity Details"
+        tools:layout="@layout/activity_fragment">
+        <argument
+            android:name="id"
+            app:argType="long" />
+        <argument
+            android:name="categoryType"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_activityFragment_to_activityInstanceFragment"
+            app:destination="@id/ActivityMoreInfo" />
+        <argument
+            android:name="unitOfMeasure"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/ActivityMoreInfo"
+        android:name="com.example.habitandgoaltracker.screens.ActivityInstanceFragment"
+        android:label="More Info">
+        <argument
+            android:name="activityId"
+            app:argType="long" />
+        <argument
+            android:name="categoryId"
+            app:argType="long" />
+        <argument
+            android:name="unitOfMeasure"
+            app:argType="string" />
+        <argument
+            android:name="categoryType"
+            app:argType="string" />
+    </fragment>
+</navigation>
